@@ -1,4 +1,4 @@
-package com.sushi.izishopping
+package com.sushi.izishopping.scanner
 
 import android.app.Activity
 import android.content.Intent

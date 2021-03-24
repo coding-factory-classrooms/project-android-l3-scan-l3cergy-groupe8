@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScannerActivity" />
+        <activity android:name=".scanner.ScannerActivity" />
         <activity
-            android:name=".CaptureActivity"
+            android:name=".scanner.CaptureActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
     </application>
