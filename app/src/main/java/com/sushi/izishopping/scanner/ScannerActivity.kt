@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import com.sushi.izishopping.databinding.ActivityScannerBinding
@@ -11,6 +12,7 @@ import com.sushi.izishopping.databinding.ActivityScannerBinding
 
 class ScannerActivity : AppCompatActivity() {
 
+    protected val model : ScannerViewModel by viewModels()
     private lateinit var binding : ActivityScannerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,13 +35,12 @@ class ScannerActivity : AppCompatActivity() {
         if(resultCode == Activity.RESULT_OK) {
             val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
             if (result != null) {
-                if (result.contents == null) {
-                    Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
-                } else {
+                if (result.contents != null) {
                     Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
+                    model.findFoodInfos(result.contents)
+                } else {
+                    Toast.makeText(this, "error", Toast.LENGTH_LONG).show()
                 }
-            } else {
-                super.onActivityResult(requestCode, resultCode, data)
             }
         }
     }
