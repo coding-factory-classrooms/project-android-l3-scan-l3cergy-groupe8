@@ -3,6 +3,8 @@ package com.sushi.izishopping.scanner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
+private const val TAG = "ScannerViewModel"
+
 sealed class ScannerViewModelState(
     open val errorMessage: String = "",
 ) {
@@ -16,7 +18,7 @@ class ScannerViewModel {
 
     fun getInfos() : LiveData<ScannerViewModelState> = state
 
-    fun scanner() {
-        
+    fun findFoodInfos(barcode: String) {
+
     }
 }
