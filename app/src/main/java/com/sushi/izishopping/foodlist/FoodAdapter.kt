@@ -1,10 +1,13 @@
 package com.sushi.izishopping.foodlist
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sushi.izishopping.Food
 import com.sushi.izishopping.databinding.ItemFoodBinding
+import com.sushi.izishopping.fooddetail.FoodDetailActivity
+
 
 // prend en parametre du constructeur, la FoodList
 class FoodAdapter(private var foodList: List<Food>)
@@ -12,6 +15,7 @@ class FoodAdapter(private var foodList: List<Food>)
     class ViewHolder(val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,11 +25,19 @@ class FoodAdapter(private var foodList: List<Food>)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val food = foodList[position]
+
         with (holder.binding) {
             foodTitleTextView.text = food.name
             scanDateTextView.text = "TBD"
             barCodeTextView.text = food.barcode
             foodImageView.setImageResource(food.imgLink)
+        }
+
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val detailIntent = Intent(context, FoodDetailActivity::class.java)
+            //detailIntent.putExtra()
+            context.startActivity(detailIntent)
         }
     }
 
