@@ -8,3 +8,8 @@ data class Food(
     val nutriScore : String
 )
 
+data class ShoppingList(
+    val name: String,
+    val foodList : List<Food>
+)
+
