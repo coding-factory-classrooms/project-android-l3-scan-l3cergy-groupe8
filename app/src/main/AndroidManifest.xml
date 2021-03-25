@@ -17,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".foodlist.FoodListActivity"></activity>
         <activity android:name=".scanner.ScannerActivity" />
         <activity
             android:name=".scanner.CaptureActivity"
