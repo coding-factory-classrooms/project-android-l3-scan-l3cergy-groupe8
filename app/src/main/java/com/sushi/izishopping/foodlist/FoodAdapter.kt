@@ -8,9 +8,6 @@ import com.sushi.izishopping.Food
 import com.sushi.izishopping.databinding.ItemFoodBinding
 import com.sushi.izishopping.fooddetail.FoodDetailActivity
 import com.sushi.izishopping.DownloadImageFromUrl
-import java.io.*
-
-
 
 // prend en parametre du constructeur, la FoodList
 class FoodAdapter(private var foodList: List<Food>)
