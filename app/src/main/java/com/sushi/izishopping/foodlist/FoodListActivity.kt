@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sushi.izishopping.Food
 import com.sushi.izishopping.databinding.ActivityFoodListBinding
 
@@ -13,6 +14,7 @@ private const val TAG = "FoodListActivity"
 class FoodListActivity : AppCompatActivity() {
     private val model : FoodListViewModel by viewModels()
     private lateinit var binding : ActivityFoodListBinding
+    private lateinit var adapter : FoodAdapter
 
     private var foodList : MutableList<Food> = mutableListOf()
 
@@ -25,6 +27,10 @@ class FoodListActivity : AppCompatActivity() {
             state -> updateUi(state)
         })
 
+        adapter = FoodAdapter(listOf())
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
         model.getFoodList()
     }
 
@@ -33,7 +39,7 @@ class FoodListActivity : AppCompatActivity() {
             is FoodListViewModelState.Loading -> TODO()
             is FoodListViewModelState.Empty -> TODO()
             is FoodListViewModelState.Success -> {
-                foodList = state.foodList.toMutableList()
+                adapter.updateDataSet(state.foodList.toMutableList())
                 Log.i(TAG, "updateUi: $foodList")
             }
             is FoodListViewModelState.Failure -> TODO()
