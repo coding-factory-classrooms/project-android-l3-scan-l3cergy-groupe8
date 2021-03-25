@@ -4,11 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sushi.izishopping.Food
+import com.sushi.izishopping.R
 
 private val fakeData : List<Food> = listOf(
-    Food("3329770063297", "YOP Parfum Vanille", "yop-vanille.jpg"),
-    Food("3329770063280", "YOP Parfum Framboise", "yop-framboise.jpg"),
-    Food("3023470001015", "Galettes St. Michel", "galette-st-michel.jpg"),
+    Food("3329770063297", "YOP Parfum Vanille", R.drawable.food_yop_vanille),
+    Food("3329770063280", "YOP Parfum Framboise", R.drawable.food_yop_framboise),
+    Food("3023470001015", "Galettes St. Michel", R.drawable.food_galette_st_michel),
 )
 
 sealed class FoodListViewModelState(
@@ -21,11 +22,13 @@ sealed class FoodListViewModelState(
 }
 
 class FoodListViewModel : ViewModel() {
+
     private val state = MutableLiveData<FoodListViewModelState>()
 
     fun getInfos() : LiveData<FoodListViewModelState> = state
 
     fun getFoodList() {
+
         state.postValue(FoodListViewModelState.Loading())
 //        TODO("Ajouter récupération des data via la BDD")
 
