@@ -14,7 +14,6 @@ import com.sushi.izishopping.databinding.ActivityScannerBinding
 private const val TAG = "ScannerActivity"
 
 class ScannerActivity : AppCompatActivity() {
-
     private var debugMode : Boolean = true
     private val defaultBarcode : String = "3329770063297"
 

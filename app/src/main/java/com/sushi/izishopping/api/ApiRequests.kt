@@ -59,7 +59,9 @@ fun foodApiCall(barcode : String){
             val newFood = Food(
                 foodInfo.body()!!.code,
                 foodInfo.body()!!.product.product_name,
-                LocalDateTime.now().toString()
+                LocalDateTime.now().toString(),
+                foodInfo.body()!!.product.image_url,
+                foodInfo.body()!!.product.nutrition_grades
             )
             Log.i(TAG, "onResponse: newFood = $newFood")
         }
