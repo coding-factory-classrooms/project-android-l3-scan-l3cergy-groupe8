@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fooddetail.FoodDetailActivity">
+
+    <ImageView
+        android:id="@+id/foodDetailImageView"
+        android:layout_width="170dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168"
+        app:srcCompat="@drawable/food_nutella" />
+
+    <TextView
+        android:id="@+id/detailTitletextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scanDetailTextView"
+        app:layout_constraintStart_toEndOf="@+id/foodDetailImageView"
+        app:layout_constraintTop_toTopOf="@+id/foodDetailImageView"
+        tools:text="NOM DU PRODUIT" />
+
+    <TextView
+        android:id="@+id/scanDetailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/foodDetailImageView"
+        app:layout_constraintStart_toStartOf="@+id/detailTitletextView"
+        app:layout_constraintTop_toBottomOf="@+id/detailTitletextView"
+        tools:text="25/03/2021" />
+
+    <Button
+        android:id="@+id/detailCompareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:text="Compare"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
