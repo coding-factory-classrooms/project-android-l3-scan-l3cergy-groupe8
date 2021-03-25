@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sushi.izishopping.Food
 import com.sushi.izishopping.databinding.ItemFoodBinding
 import com.sushi.izishopping.fooddetail.FoodDetailActivity
+import com.sushi.izishopping.DownloadImageFromUrl
+import java.io.*
+
 
 
 // prend en parametre du constructeur, la FoodList
@@ -30,7 +33,7 @@ class FoodAdapter(private var foodList: List<Food>)
             foodTitleTextView.text = food.name
             scanDateTextView.text = "TBD"
             barCodeTextView.text = food.barcode
-            foodImageView.setImageResource(food.imgLink)
+            DownloadImageFromUrl(foodImageView).execute(food.imgLink)
         }
 
         holder.itemView.setOnClickListener {

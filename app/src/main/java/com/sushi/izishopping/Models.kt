@@ -3,5 +3,8 @@ package com.sushi.izishopping
 data class Food(
     val barcode: String,
     val name: String,
-    val imgLink: Int,
+    val dateScan: String,
+    val imgLink: String,
+    val nutriScore : String
 )
+

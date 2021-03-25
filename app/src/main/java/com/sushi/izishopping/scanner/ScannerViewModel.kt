@@ -1,9 +1,9 @@
 package com.sushi.izishopping.scanner
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sushi.izishopping.api.foodApiCall
 
 private const val TAG = "ScannerViewModel"
 
@@ -17,10 +17,9 @@ sealed class ScannerViewModelState(
 class ScannerViewModel : ViewModel() {
 
     private val state = MutableLiveData<ScannerViewModelState>()
-
     fun getInfos() : LiveData<ScannerViewModelState> = state
 
     fun findFoodInfos(barcode: String) {
-        Log.i(TAG, "findFoodInfos: $barcode")
+        foodApiCall(barcode)
     }
 }
