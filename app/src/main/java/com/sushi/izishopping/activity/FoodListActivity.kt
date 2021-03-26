@@ -12,7 +12,7 @@ import com.sushi.izishopping.App
 import com.sushi.izishopping.adapter.FoodAdapter
 import com.sushi.izishopping.databinding.ActivityFoodListBinding
 import com.sushi.izishopping.model.Food
-import com.sushi.izishopping.utils.OnSwipeTouchListener
+import com.sushi.izishopping.utils.api.CustomApiClass
 import com.sushi.izishopping.viewmodel.FoodListViewModel
 import com.sushi.izishopping.viewmodel.FoodListViewModelState
 
@@ -38,6 +38,7 @@ class FoodListActivity : AppCompatActivity() {
         }
 
         model.foodDao = App.database.foodDao()
+        model.api = CustomApiClass()
         model.getInfos().observe(this, Observer {
             state -> updateUi(state)
         })

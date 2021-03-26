@@ -1,11 +1,10 @@
 package com.sushi.izishopping.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sushi.izishopping.model.Food
-import com.sushi.izishopping.utils.api.foodApiCall
+import com.sushi.izishopping.utils.api.CustomApi
 import com.sushi.izishopping.utils.database.dao.FoodDao
 
 private val fakeData : List<Food> = listOf(
@@ -28,6 +27,8 @@ class FoodListViewModel : ViewModel() {
 
     lateinit var foodDao: FoodDao
 
+    lateinit var api : CustomApi
+
     private val state = MutableLiveData<FoodListViewModelState>()
 
     fun getInfos() : LiveData<FoodListViewModelState> = state
@@ -37,12 +38,13 @@ class FoodListViewModel : ViewModel() {
 
         val foodList : List<Food> = if(shoppingListId == null || shoppingListId == 0) {
             foodDao.getAllFood().map { foodEntity ->
-                val newFood = foodApiCall(foodEntity.barcode)
+                 val newFood = api.foodApiCall(foodEntity.barcode)
+//                val newFood = Food("3329770063297", "YOP Parfum Vanille", "24/03/2021","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e")
                 Food(newFood.barcode, newFood.name, newFood.dateScan, newFood.imgLink, newFood.nutriScore)
             }
         } else {
             foodDao.getAllFoodByShoppingListId(shoppingListId).map { foodEntity ->
-                val newFood = foodApiCall(foodEntity.barcode)
+                val newFood = api.foodApiCall(foodEntity.barcode)
                 Food(newFood.barcode, newFood.name, newFood.dateScan, newFood.imgLink, newFood.nutriScore)
             }
         }
