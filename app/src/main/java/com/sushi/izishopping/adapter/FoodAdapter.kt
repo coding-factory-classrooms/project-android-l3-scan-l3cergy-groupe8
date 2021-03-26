@@ -31,14 +31,14 @@ class FoodAdapter(private var foodList: List<Food>)
             scanDateTextView.text = "TBD"
             barCodeTextView.text = food.barcode
             DownloadImageFromUrl(foodImageView).execute(food.imgLink)
+            root.setOnClickListener {
+                val context = holder.binding.root.context
+                val detailIntent = Intent(context, FoodDetailActivity::class.java)
+                detailIntent.putExtra("food", food)
+                context.startActivity(detailIntent)
+            }
         }
 
-        holder.itemView.setOnClickListener {
-            val context = holder.itemView.context
-            val detailIntent = Intent(context, FoodDetailActivity::class.java)
-            //detailIntent.putExtra()
-            context.startActivity(detailIntent)
-        }
     }
 
     override fun getItemCount(): Int = foodList.size

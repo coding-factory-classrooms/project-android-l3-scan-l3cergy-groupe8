@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fooddetail.FoodDetailActivity">
+    tools:context=".activity.FoodDetailActivity">
 
     <ImageView
         android:id="@+id/foodDetailImageView"
@@ -22,10 +22,9 @@
         android:id="@+id/detailTitletextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scanDetailTextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/foodDetailImageView"
         app:layout_constraintTop_toTopOf="@+id/foodDetailImageView"
         tools:text="NOM DU PRODUIT" />
@@ -43,9 +42,11 @@
         android:id="@+id/detailCompareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
         android:text="Compare"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.837" />
 </androidx.constraintlayout.widget.ConstraintLayout>
