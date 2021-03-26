@@ -25,6 +25,7 @@ class ShoppinglistAdapter(private var shoppinglist: List<Shoppinglist>)
 
         with (holder.binding) {
             shoppinglistTextView.text = shoppinglist.name
+            shoppinglistNbFoodTextView.text = shoppinglist.nbFoodInShoppinglist.toString()
 
             root.setOnClickListener{
                 val detailIntent = Intent(root.context, FoodListActivity::class.java)
