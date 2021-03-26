@@ -45,14 +45,21 @@ class ShoppinglistActivity : AppCompatActivity(){
         binding.shoppingListRecyclerView.adapter = adapter
         binding.shoppingListRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        this.binding.shoppingListRecyclerView.setOnTouchListener(
+        this.binding.goToFoodListFloatingActionButton.setOnClickListener {
+            val foodListIntent = Intent(this, FoodListActivity::class.java)
+            foodListIntent.putExtra("shoppingListId", 0)
+            startActivity(foodListIntent)
+        }
+
+        //Ajout d'un swipe pour changer de vue entre les recyclerView ( peu fonctionnel )
+        /*shoppingListRecyclerView.setOnTouchListener(
             object: OnSwipeTouchListener(this){
                 override fun onSwipeRight() {
                     val foodListIntent = Intent(context, FoodListActivity::class.java)
                     foodListIntent.putExtra("shoppingListId", 0)
                     startActivity(foodListIntent)
                 }
-            })
+            })*/
         model.getShoppinglistList()
     }
 

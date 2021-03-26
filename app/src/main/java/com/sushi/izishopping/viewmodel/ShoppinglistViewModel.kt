@@ -31,7 +31,7 @@ class ShoppinglistViewModel : ViewModel() {
         state.postValue(ShoppinglistListModelState.Loading())
 
         shoppinglistList = shoppinglistDao.getAllShoppinglist().map { shoppinglistEntity ->
-            Shoppinglist(shoppinglistEntity.name, shoppinglistEntity.shoppingListId)
+            Shoppinglist(shoppinglistEntity.name, shoppinglistEntity.shoppingListId, shoppinglistDao.getNbFoodInShoppinglist(shoppinglistEntity.shoppingListId))
         }
 
         when {

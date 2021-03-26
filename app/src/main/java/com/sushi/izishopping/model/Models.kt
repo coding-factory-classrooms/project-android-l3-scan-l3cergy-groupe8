@@ -53,5 +53,6 @@ data class Food(
 
 data class Shoppinglist(
     val name: String,
-    val id : Int
+    val id : Int,
+    val nbFoodInShoppinglist: Int
 )

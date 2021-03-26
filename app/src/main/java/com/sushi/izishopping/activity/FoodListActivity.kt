@@ -47,14 +47,20 @@ class FoodListActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
 
-        this.binding.recyclerView.setOnTouchListener(
+        this.binding.goToShoppinglistFloatingActionButton.setOnClickListener {
+            val shoppinglistIntent = Intent(this, ShoppinglistActivity::class.java)
+            startActivity(shoppinglistIntent)
+        }
+
+        //Ajout d'un swipe pour changer de vue entre les recyclerView ( peu fonctionnel )
+        /*recyclerView.setOnTouchListener(
             object : OnSwipeTouchListener(this) {
                 override fun onSwipeLeft() {
                     val shoppinglistIntent = Intent(context, ShoppinglistActivity::class.java)
-                    Log.i(TAG, "onSwipeRight: $context")
+                    Log.i(TAG, "onSwipeLeft: $context")
                     startActivity(shoppinglistIntent)
                 }
-            })
+            })*/
 
         val shoppinglistId = intent.getIntExtra("shoppingListId", 0)
         model.getFoodList(shoppinglistId)
