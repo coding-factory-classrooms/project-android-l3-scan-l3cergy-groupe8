@@ -61,10 +61,10 @@ class LoginActivity : AppCompatActivity() {
             LoginViewModelState.Success -> {
                 binding.loginButton.isEnabled = state.loginButtonEnabled
                 Toast.makeText(this@LoginActivity,
-                    "Login OK ! Navigation vers la liste de films..",
+                    "Login OK ! Navigation vers la liste de produits alimentaires..",
                     Toast.LENGTH_SHORT).show()
 
-                navigateToMainActivity()
+                navigateToFoodListActivity()
             }
             is LoginViewModelState.Failure -> {
                 binding.loginButton.isEnabled = state.loginButtonEnabled
@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToMainActivity() {
+    private fun navigateToFoodListActivity() {
         val intent = Intent(this, FoodListActivity::class.java)
         startActivity(intent)
         finish()

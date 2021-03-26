@@ -10,13 +10,14 @@ import androidx.lifecycle.Observer
 import com.google.zxing.integration.android.IntentIntegrator
 import com.sushi.izishopping.App
 import com.sushi.izishopping.databinding.ActivityScannerBinding
+import com.sushi.izishopping.utils.api.foodApiCall
 import com.sushi.izishopping.viewmodel.ScannerViewModel
 import com.sushi.izishopping.viewmodel.ScannerViewModelState
 
 private const val TAG = "ScannerActivity"
 
 class ScannerActivity : AppCompatActivity() {
-    private var debugMode : Boolean = true
+    private var debugMode : Boolean = false
     private val defaultBarcode : String = "3329770063297"
 
     private val model : ScannerViewModel by viewModels()
@@ -46,8 +47,8 @@ class ScannerActivity : AppCompatActivity() {
     private fun updateUi(state: ScannerViewModelState) {
         when(state) {
             is ScannerViewModelState.Success -> {
-                var intent = Intent(this, FoodDetailActivity::class.java)
-                intent.putExtra("barcode", state.barcode)
+                val intent = Intent(this, FoodDetailActivity::class.java)
+                intent.putExtra("food", foodApiCall(state.barcode) )
                 startActivity(intent)
                 finish()
             }
