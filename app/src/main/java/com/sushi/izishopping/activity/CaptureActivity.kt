@@ -1,4 +1,4 @@
-package com.sushi.izishopping.scanner
+package com.sushi.izishopping.activity
 
 import com.journeyapps.barcodescanner.CaptureActivity
 

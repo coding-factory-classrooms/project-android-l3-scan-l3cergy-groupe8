@@ -1,14 +1,13 @@
-package com.sushi.izishopping.foodlist
+package com.sushi.izishopping.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.sushi.izishopping.Food
+import com.sushi.izishopping.utils.DownloadImageFromUrl
+import com.sushi.izishopping.model.Food
+import com.sushi.izishopping.activity.FoodDetailActivity
 import com.sushi.izishopping.databinding.ItemFoodBinding
-import com.sushi.izishopping.DownloadImageFromUrl
-import java.io.*
-
-
 
 // prend en parametre du constructeur, la FoodList
 class FoodAdapter(private var foodList: List<Food>)
@@ -16,6 +15,7 @@ class FoodAdapter(private var foodList: List<Food>)
     class ViewHolder(val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,11 +25,19 @@ class FoodAdapter(private var foodList: List<Food>)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val food = foodList[position]
-        with(holder.binding) {
+
+        with (holder.binding) {
             foodTitleTextView.text = food.name
             scanDateTextView.text = "TBD"
             barCodeTextView.text = food.barcode
             DownloadImageFromUrl(foodImageView).execute(food.imgLink)
+        }
+
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val detailIntent = Intent(context, FoodDetailActivity::class.java)
+            //detailIntent.putExtra()
+            context.startActivity(detailIntent)
         }
     }
 
