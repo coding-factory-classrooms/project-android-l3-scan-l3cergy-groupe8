@@ -1,5 +1,6 @@
 package com.sushi.izishopping.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import com.sushi.izishopping.App
 import com.sushi.izishopping.adapter.FoodAdapter
 import com.sushi.izishopping.databinding.ActivityFoodListBinding
 import com.sushi.izishopping.model.Food
+import com.sushi.izishopping.utils.OnSwipeTouchListener
 import com.sushi.izishopping.viewmodel.FoodListViewModel
 import com.sushi.izishopping.viewmodel.FoodListViewModelState
 
@@ -23,12 +25,13 @@ class FoodListActivity : AppCompatActivity() {
 
     private var foodList : MutableList<Food> = mutableListOf()
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFoodListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.floatingActionButton.setOnClickListener { view ->
+        binding.floatingActionButton.setOnClickListener {
             Log.i(TAG, "onClick scannerButton: TEST")
             val scannerIntent = Intent(this, ScannerActivity::class.java)
             startActivity(scannerIntent)
@@ -43,12 +46,30 @@ class FoodListActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        model.getFoodList(null)
+
+        this.binding.goToShoppinglistFloatingActionButton.setOnClickListener {
+            val shoppinglistIntent = Intent(this, ShoppinglistActivity::class.java)
+            startActivity(shoppinglistIntent)
+        }
+
+        //Ajout d'un swipe pour changer de vue entre les recyclerView ( peu fonctionnel )
+        /*recyclerView.setOnTouchListener(
+            object : OnSwipeTouchListener(this) {
+                override fun onSwipeLeft() {
+                    val shoppinglistIntent = Intent(context, ShoppinglistActivity::class.java)
+                    Log.i(TAG, "onSwipeLeft: $context")
+                    startActivity(shoppinglistIntent)
+                }
+            })*/
+
+        val shoppinglistId = intent.getIntExtra("shoppingListId", 0)
+        model.getFoodList(shoppinglistId)
     }
 
     override fun onResume() {
         super.onResume()
-        model.getFoodList(null)
+        val shoppinglistId = intent.getIntExtra("shoppingListId", 0)
+        model.getFoodList(shoppinglistId)
     }
 
     private fun updateUi(state: FoodListViewModelState) {

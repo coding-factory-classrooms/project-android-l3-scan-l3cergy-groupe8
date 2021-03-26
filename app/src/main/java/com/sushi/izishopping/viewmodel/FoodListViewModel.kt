@@ -1,9 +1,11 @@
 package com.sushi.izishopping.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sushi.izishopping.model.Food
+import com.sushi.izishopping.utils.api.foodApiCall
 import com.sushi.izishopping.utils.database.dao.FoodDao
 
 private val fakeData : List<Food> = listOf(
@@ -33,13 +35,15 @@ class FoodListViewModel : ViewModel() {
     fun getFoodList(shoppingListId: Int?) {
         state.postValue(FoodListViewModelState.Loading)
 
-        var foodList : List<Food> = if(shoppingListId == null) {
+        val foodList : List<Food> = if(shoppingListId == null || shoppingListId == 0) {
             foodDao.getAllFood().map { foodEntity ->
-                Food(foodEntity.barcode, foodEntity.name, foodEntity.dateScan, "", "")
+                val newFood = foodApiCall(foodEntity.barcode)
+                Food(newFood.barcode, newFood.name, newFood.dateScan, newFood.imgLink, newFood.nutriScore)
             }
         } else {
             foodDao.getAllFoodByShoppingListId(shoppingListId).map { foodEntity ->
-                Food(foodEntity.barcode, foodEntity.name, foodEntity.dateScan, "", "")
+                val newFood = foodApiCall(foodEntity.barcode)
+                Food(newFood.barcode, newFood.name, newFood.dateScan, newFood.imgLink, newFood.nutriScore)
             }
         }
 

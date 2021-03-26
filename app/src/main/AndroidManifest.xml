@@ -22,6 +22,11 @@
         </activity>
         <activity android:name=".activity.FoodListActivity" />
         <activity android:name=".activity.FoodDetailActivity" />
+        <activity android:name=".activity.ShoppinglistActivity">
+
+
+        </activity>
+        <activity android:name=".activity.ShoppinglistCreationActivity"/>
         <activity android:name=".activity.ScannerActivity" />
         <activity
             android:name=".activity.CaptureActivity"

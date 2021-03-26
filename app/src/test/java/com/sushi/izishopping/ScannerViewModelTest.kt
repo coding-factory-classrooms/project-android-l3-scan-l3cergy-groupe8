@@ -1,6 +1,5 @@
 package com.sushi.izishopping
 
-import android.util.Log
 import com.sushi.izishopping.viewmodel.ScannerViewModel
 import fr.neren.movies.testObserver
 import org.junit.Test

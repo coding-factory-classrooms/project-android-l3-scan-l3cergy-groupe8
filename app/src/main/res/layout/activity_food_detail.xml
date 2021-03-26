@@ -14,39 +14,110 @@
         android:layout_marginLeft="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168"
+        app:layout_constraintTop_toBottomOf="@+id/detailTitletextView"
+        app:layout_constraintVertical_bias="0.124"
         app:srcCompat="@drawable/food_nutella" />
+
+    <TextView
+        android:id="@+id/nutriScoreLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Nutri-Score :"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foodDetailImageView"
+        app:layout_constraintTop_toTopOf="@+id/foodDetailImageView" />
+
+    <TextView
+        android:id="@+id/nutriScoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:capitalize="characters"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/nutriScoreRankLabelTextView"
+        app:layout_constraintEnd_toEndOf="@+id/nutriScoreLabelTextView"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/nutriScoreLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nutriScoreLabelTextView"
+        app:layout_constraintVertical_bias="0.481"
+        tools:text="A" />
+
+    <TextView
+        android:id="@+id/nutriScoreRankLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
+        android:text="A > B > C > D > E"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/foodDetailImageView"
+        app:layout_constraintEnd_toEndOf="@+id/nutriScoreLabelTextView"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/nutriScoreLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nutriScoreLabelTextView"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/detailTitletextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:textAllCaps="false"
+        android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scanDetailTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/foodDetailImageView"
-        app:layout_constraintTop_toTopOf="@+id/foodDetailImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="NOM DU PRODUIT" />
 
     <TextView
         android:id="@+id/scanDetailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/foodDetailImageView"
-        app:layout_constraintStart_toStartOf="@+id/detailTitletextView"
-        app:layout_constraintTop_toBottomOf="@+id/detailTitletextView"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toEndOf="@+id/foodDetailImageView"
+        app:layout_constraintTop_toBottomOf="@+id/foodDetailImageView"
         tools:text="25/03/2021" />
+
+    <TextView
+        android:id="@+id/dateLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dernier scan le : "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/scanDetailTextView"
+        app:layout_constraintEnd_toStartOf="@+id/scanDetailTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/foodDetailImageView"
+        app:layout_constraintTop_toTopOf="@+id/scanDetailTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/detailCompareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Compare"
+        app:layout_constraintBottom_toBottomOf="@+id/barcodeTextView"
+        app:layout_constraintEnd_toEndOf="@+id/detailTitletextView"
+        app:layout_constraintTop_toTopOf="@+id/barcodeTextView" />
+
+    <TextView
+        android:id="@+id/barcodeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837" />
+        app:layout_constraintEnd_toStartOf="@+id/detailCompareButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/foodDetailImageView"
+        app:layout_constraintTop_toBottomOf="@+id/scanDetailTextView"
+        app:layout_constraintVertical_bias="0.502"
+        tools:text="3329770063297" />
 </androidx.constraintlayout.widget.ConstraintLayout>

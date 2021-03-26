@@ -35,6 +35,8 @@ class FoodDetailActivity : AppCompatActivity() {
                 binding.detailTitletextView.text = state.foodItem.name
                 DownloadImageFromUrl(binding.foodDetailImageView).execute(state.foodItem.imgLink)
                 binding.scanDetailTextView.text = state.foodItem.dateScan
+                binding.nutriScoreTextView.text = state.foodItem.nutriScore
+                binding.barcodeTextView.text = state.foodItem.barcode
             }
             is FoodDetailViewModelState.Failure ->
                 Log.e(TAG, "updateUi: ${state.errorMessage}")
