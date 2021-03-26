@@ -1,8 +1,8 @@
 package com.sushi.izishopping
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.sushi.izishopping.login.LoginViewModel
-import com.sushi.izishopping.login.LoginViewModelState
+import com.sushi.izishopping.viewmodel.LoginViewModel
+import com.sushi.izishopping.viewmodel.LoginViewModelState
 import fr.neren.movies.testObserver
 import org.junit.Assert
 import org.junit.Rule

@@ -17,8 +17,9 @@ private val fakeData : List<Food> = listOf(
 sealed class FoodListViewModelState(
     open val errorMessage: String = ""
 ) {
-    class Loading() : FoodListViewModelState()
-    class Empty() : FoodListViewModelState(errorMessage = "La liste d'aliment est vide.")
+    object Loading : FoodListViewModelState()
+    data class Empty(override val errorMessage: String) : FoodListViewModelState(errorMessage = errorMessage)
+
     data class Success(val foodList : List<Food>) : FoodListViewModelState()
     class Failure() : FoodListViewModelState(errorMessage = "Une erreur est survenue durant la récupération de la liste.")
 }
@@ -32,7 +33,7 @@ class FoodListViewModel : ViewModel() {
     fun getInfos() : LiveData<FoodListViewModelState> = state
 
     fun getFoodList(shoppingListId: Int?) {
-        state.postValue(FoodListViewModelState.Loading())
+        state.postValue(FoodListViewModelState.Loading)
 
         val foodList : List<Food> = if(shoppingListId == null || shoppingListId == 0) {
             foodDao.getAllFood().map { foodEntity ->
@@ -48,7 +49,7 @@ class FoodListViewModel : ViewModel() {
 
         when {
             foodList.isEmpty() -> {
-                state.postValue(FoodListViewModelState.Empty())
+                state.postValue(FoodListViewModelState.Empty("La liste d'aliment est vide."))
             }
             foodList.isNotEmpty() -> {
                 state.postValue(FoodListViewModelState.Success(foodList))

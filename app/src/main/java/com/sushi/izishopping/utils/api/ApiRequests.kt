@@ -59,7 +59,7 @@ fun foodApiCall(barcode: String): Food {
     //execute() permet de faire l'apple API de manière synchrone, qui nous permet de return newFood
     val response: Response<FoodInfo> = apiCall.foodInformation(barcode).execute()
     val apiResponse: FoodInfo = response.body()!!
-    val sdf = SimpleDateFormat("dd-MM-yyyy")
+    val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
 
     newFood = Food (
         apiResponse.code,
