@@ -1,5 +1,6 @@
 package com.sushi.izishopping.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -26,9 +27,7 @@ class FoodListActivity : AppCompatActivity() {
         binding = ActivityFoodListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        model.getInfos().observe(this, Observer {
-            state -> updateUi(state)
-        })
+        model.getInfos().observe(this, Observer {updateUi(it!!)})
 
         adapter = FoodAdapter(listOf())
         binding.recyclerView.adapter = adapter
@@ -37,7 +36,7 @@ class FoodListActivity : AppCompatActivity() {
         model.getFoodList()
     }
 
-    private fun updateUi(state: FoodListViewModelState?) {
+    private fun updateUi(state: FoodListViewModelState) {
         when(state) {
             is FoodListViewModelState.Loading -> TODO()
             is FoodListViewModelState.Empty -> TODO()
@@ -45,8 +44,8 @@ class FoodListActivity : AppCompatActivity() {
                 adapter.updateDataSet(state.foodList.toMutableList())
                 Log.i(TAG, "updateUi: $foodList")
             }
-            is FoodListViewModelState.Failure -> TODO()
-            else -> TODO()
+            is FoodListViewModelState.Failure ->
+                Log.i(TAG, "updateUi: ${state.errorMessage}")
         }
     }
 }

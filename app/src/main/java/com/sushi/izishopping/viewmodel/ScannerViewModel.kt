@@ -26,7 +26,7 @@ class ScannerViewModel() : ViewModel() {
     fun getInfos() : LiveData<ScannerViewModelState> = state
 
     fun findFoodInfos(barcode: String) {
-        var food : Food = foodApiCall(barcode)
+        val food : Food = foodApiCall(barcode)
         if(food != null) {
             foodDao.addFood(food.toFoodEntity())
             getAllData()
