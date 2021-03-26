@@ -1,4 +1,4 @@
-package com.sushi.izishopping.api
+package com.sushi.izishopping.utils.api
 
 //Les deux data class ci-dessous sont découpées ainsi afin de faire écho au modèle de données
 //présent dans le JSON récupéré dans l'appel à l'API

@@ -1,14 +1,14 @@
-package com.sushi.izishopping.foodlist
+package com.sushi.izishopping.adapter
 
 import android.content.Intent
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.sushi.izishopping.Food
+import com.sushi.izishopping.utils.DownloadImageFromUrl
+import com.sushi.izishopping.model.Food
+import com.sushi.izishopping.activity.FoodDetailActivity
 import com.sushi.izishopping.databinding.ItemFoodBinding
-import com.sushi.izishopping.fooddetail.FoodDetailActivity
-import com.sushi.izishopping.DownloadImageFromUrl
 
 // prend en parametre du constructeur, la FoodList
 class FoodAdapter(private var foodList: List<Food>)

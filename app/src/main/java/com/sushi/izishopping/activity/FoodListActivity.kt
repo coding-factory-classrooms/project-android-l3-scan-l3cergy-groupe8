@@ -1,4 +1,4 @@
-package com.sushi.izishopping.foodlist
+package com.sushi.izishopping.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sushi.izishopping.Food
+import com.sushi.izishopping.adapter.FoodAdapter
 import com.sushi.izishopping.databinding.ActivityFoodListBinding
-import com.sushi.izishopping.fooddetail.FoodDetailActivity
+import com.sushi.izishopping.model.Food
+import com.sushi.izishopping.viewmodel.FoodListViewModel
+import com.sushi.izishopping.viewmodel.FoodListViewModelState
 
 private const val TAG = "FoodListActivity"
 
