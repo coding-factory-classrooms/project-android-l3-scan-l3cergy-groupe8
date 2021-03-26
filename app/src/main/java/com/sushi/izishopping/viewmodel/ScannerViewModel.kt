@@ -35,7 +35,7 @@ class ScannerViewModel() : ViewModel() {
             if(entity == null) {
                 foodDao.addFood(food.toFoodEntity())
             } else {
-                val sdf = SimpleDateFormat("dd-MM-yyyy")
+                val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
                 foodDao.updateFoodDateScan(food.barcode, sdf.format(Date()))
             }
 
