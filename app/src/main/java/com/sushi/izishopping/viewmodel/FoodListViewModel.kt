@@ -1,4 +1,4 @@
-package com.sushi.izishopping.foodlist
+package com.sushi.izishopping.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.sushi.izishopping.scanner
+package com.sushi.izishopping.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
