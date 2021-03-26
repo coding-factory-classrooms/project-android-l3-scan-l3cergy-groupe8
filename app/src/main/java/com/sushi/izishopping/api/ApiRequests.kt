@@ -28,7 +28,8 @@ interface FoodApiCall {
 }
 
 //Permet de créer un appel à l'API graâce à Retrofit via l'interface FoodApiCall
-fun foodApiCall(barcode : String){
+fun foodApiCall(barcode : String) {
+
     val logging = HttpLoggingInterceptor()
     logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
     val client = OkHttpClient.Builder()

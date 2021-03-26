@@ -1,6 +1,7 @@
 package com.sushi.izishopping.foodlist
 
 import android.content.Intent
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -31,14 +32,20 @@ class FoodAdapter(private var foodList: List<Food>)
             scanDateTextView.text = "TBD"
             barCodeTextView.text = food.barcode
             DownloadImageFromUrl(foodImageView).execute(food.imgLink)
+            root.setOnClickListener {
+                val context = holder.binding.root.context
+                val detailIntent = Intent(context, FoodDetailActivity::class.java)
+                detailIntent.putExtra("food", food)
+                context.startActivity(detailIntent)
+            }
         }
 
-        holder.itemView.setOnClickListener {
+        /*holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val detailIntent = Intent(context, FoodDetailActivity::class.java)
             //detailIntent.putExtra()
             context.startActivity(detailIntent)
-        }
+        }*/
     }
 
     override fun getItemCount(): Int = foodList.size

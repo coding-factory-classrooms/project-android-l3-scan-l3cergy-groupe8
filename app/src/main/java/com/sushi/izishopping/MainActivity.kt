@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.foodListButton.setOnClickListener {
-            val scannerIntent = Intent(this, FoodListActivity::class.java)
-            startActivity(scannerIntent)
+            val foodListIntent = Intent(this, FoodListActivity::class.java)
+            startActivity(foodListIntent)
         }
 
         binding.scannerPageButton.setOnClickListener {
