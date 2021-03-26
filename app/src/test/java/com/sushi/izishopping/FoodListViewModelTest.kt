@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import com.sushi.izishopping.model.Food
-import com.sushi.izishopping.utils.database.IziShoppingDatabase
 import com.sushi.izishopping.utils.database.dao.FoodDao
 import com.sushi.izishopping.utils.database.entity.FoodEntity
 import com.sushi.izishopping.viewmodel.FoodListViewModel
@@ -15,7 +14,6 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.mock
 
 class FoodListViewModelTest {
 
