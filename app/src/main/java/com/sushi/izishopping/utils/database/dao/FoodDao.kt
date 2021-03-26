@@ -1,9 +1,9 @@
-package com.sushi.izishopping.data.dao
+package com.sushi.izishopping.utils.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.sushi.izishopping.data.entity.FoodEntity
+import com.sushi.izishopping.utils.database.entity.FoodEntity
 
 @Dao
 interface FoodDao {

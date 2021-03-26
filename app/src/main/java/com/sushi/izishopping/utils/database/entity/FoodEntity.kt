@@ -1,4 +1,4 @@
-package com.sushi.izishopping.data.entity
+package com.sushi.izishopping.utils.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

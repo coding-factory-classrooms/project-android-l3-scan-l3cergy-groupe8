@@ -1,12 +1,9 @@
-package com.sushi.izishopping.api
+package com.sushi.izishopping.utils.api
 
-import android.os.Build
 import android.os.StrictMode
-import android.util.Log
-import androidx.annotation.RequiresApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import com.sushi.izishopping.Food
+import com.sushi.izishopping.model.Food
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -15,7 +12,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
-import java.time.LocalDateTime
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "ApiRequests"
 
@@ -26,7 +24,6 @@ interface FoodApiCall {
 }
 
 //Permet de créer un appel à l'API graâce à Retrofit via l'interface FoodApiCall
-@RequiresApi(Build.VERSION_CODES.O)
 fun foodApiCall(barcode: String): Food {
 
     //Permet de passer outre le blocage nous empêchant de run un call API sur le Thread principal
@@ -62,11 +59,12 @@ fun foodApiCall(barcode: String): Food {
     //execute() permet de faire l'apple API de manière synchrone, qui nous permet de return newFood
     val response: Response<FoodInfo> = apiCall.foodInformation(barcode).execute()
     val apiResponse: FoodInfo = response.body()!!
+    val sdf = SimpleDateFormat("dd-MM-yyyy")
 
     newFood = Food (
         apiResponse.code,
         apiResponse.product.product_name,
-        LocalDateTime.now().toString(),
+        sdf.format(Date()),
         apiResponse.product.image_url,
         apiResponse.product.nutrition_grades
     )
