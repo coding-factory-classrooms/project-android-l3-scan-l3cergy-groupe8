@@ -29,7 +29,7 @@ fun foodApiCall(barcode: String): Food {
     //Permet de passer outre le blocage nous empêchant de run un call API sur le Thread principal
     //nous permettant donc de faire un appel synchrone et de renvoyer newFood
     StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX)
-    
+
     lateinit var newFood : Food
 
     val logging = HttpLoggingInterceptor()
