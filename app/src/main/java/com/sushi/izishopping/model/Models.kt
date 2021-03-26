@@ -50,3 +50,8 @@ data class Food(
         )
     }
 }
+
+data class Shoppinglist(
+    val name: String,
+    val id : Int
+)

@@ -28,7 +28,7 @@ class FoodAdapter(private var foodList: List<Food>)
 
         with (holder.binding) {
             foodTitleTextView.text = food.name
-            scanDateTextView.text = "TBD"
+            scanDateTextView.text = food.dateScan
             barCodeTextView.text = food.barcode
             DownloadImageFromUrl(foodImageView).execute(food.imgLink)
             root.setOnClickListener {
