@@ -8,10 +8,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
-import com.sushi.izishopping.MainActivity
 import com.sushi.izishopping.databinding.ActivityLoginBinding
-import com.sushi.izishopping.login.LoginViewModel
-import com.sushi.izishopping.login.LoginViewModelState
+import com.sushi.izishopping.viewmodel.LoginViewModel
+import com.sushi.izishopping.viewmodel.LoginViewModelState
 
 private const val TAG = "LoginActivity"
 
@@ -81,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, FoodListActivity::class.java)
         startActivity(intent)
         finish()
     }
