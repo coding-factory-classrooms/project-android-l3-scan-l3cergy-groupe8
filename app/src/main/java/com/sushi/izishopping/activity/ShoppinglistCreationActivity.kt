@@ -54,7 +54,7 @@ class ShoppinglistCreationActivity : AppCompatActivity() {
                     "Création de liste effectuée",
                     Toast.LENGTH_SHORT).show()
 
-                navigateToFoodListActivity()
+                navigateToFoodListActivity(binding.shoppinglistNameEditText.text.toString().toInt())
             }
             is ShoppinglistCreationViewModelState.Failure -> {
                 binding.createShoppinglistButton.isEnabled = state.creationButtonEnabled
@@ -69,8 +69,9 @@ class ShoppinglistCreationActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToFoodListActivity() {
+    private fun navigateToFoodListActivity(shoppinglistId:Int) {
         val intent = Intent(this, FoodListActivity::class.java)
+        intent.putExtra("shoppinglistId", shoppinglistId)
         startActivity(intent)
         finish()
     }
