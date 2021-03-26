@@ -1,12 +1,12 @@
-package com.sushi.izishopping.fooddetail
+package com.sushi.izishopping.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.sushi.izishopping.R
 import com.sushi.izishopping.databinding.ActivityFoodListBinding
+import com.sushi.izishopping.fooddetail.FoodDetailViewModel
+import com.sushi.izishopping.fooddetail.FoodDetailViewModelState
 
 
 private const val TAG = "FoodDetailActivity"

@@ -1,4 +1,4 @@
-package com.sushi.izishopping.scanner
+package com.sushi.izishopping.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.google.zxing.integration.android.IntentIntegrator
 import com.sushi.izishopping.App
 import com.sushi.izishopping.databinding.ActivityScannerBinding
+import com.sushi.izishopping.scanner.ScannerViewModel
 
 private const val TAG = "ScannerActivity"
 

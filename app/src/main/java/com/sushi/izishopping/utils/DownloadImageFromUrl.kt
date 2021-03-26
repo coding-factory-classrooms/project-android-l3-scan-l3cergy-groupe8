@@ -1,4 +1,4 @@
-package com.sushi.izishopping
+package com.sushi.izishopping.utils
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap

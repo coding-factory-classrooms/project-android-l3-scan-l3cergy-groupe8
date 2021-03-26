@@ -1,6 +1,6 @@
-package com.sushi.izishopping
+package com.sushi.izishopping.model
 
-import com.sushi.izishopping.data.entity.FoodEntity
+import com.sushi.izishopping.utils.database.entity.FoodEntity
 
 data class Food(
     val barcode: String,

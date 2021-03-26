@@ -1,16 +1,17 @@
-package com.sushi.izishopping.login
+package com.sushi.izishopping.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.sushi.izishopping.MainActivity
 import com.sushi.izishopping.databinding.ActivityLoginBinding
-import com.sushi.izishopping.foodlist.FoodListActivity
+import com.sushi.izishopping.login.LoginViewModel
+import com.sushi.izishopping.login.LoginViewModelState
 
 private const val TAG = "LoginActivity"
 

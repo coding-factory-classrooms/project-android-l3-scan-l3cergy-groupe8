@@ -3,7 +3,7 @@ package com.sushi.izishopping.fooddetail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sushi.izishopping.Food
+import com.sushi.izishopping.model.Food
 
 private val foodItem : List<Food> = listOf(
     Food("3329770063297", "YOP Parfum Vanille", "","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e")

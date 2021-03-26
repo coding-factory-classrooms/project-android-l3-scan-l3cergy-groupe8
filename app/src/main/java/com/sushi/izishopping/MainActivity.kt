@@ -3,9 +3,9 @@ package com.sushi.izishopping
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.sushi.izishopping.activity.FoodListActivity
+import com.sushi.izishopping.activity.ScannerActivity
 import com.sushi.izishopping.databinding.ActivityMainBinding
-import com.sushi.izishopping.foodlist.FoodListActivity
-import com.sushi.izishopping.scanner.ScannerActivity
 
 class MainActivity : AppCompatActivity() {
 

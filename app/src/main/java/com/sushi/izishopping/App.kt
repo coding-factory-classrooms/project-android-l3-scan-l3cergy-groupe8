@@ -2,7 +2,7 @@ package com.sushi.izishopping
 
 import android.app.Application
 import androidx.room.Room
-import com.sushi.izishopping.data.IziShoppingDatabase
+import com.sushi.izishopping.utils.database.IziShoppingDatabase
 
 class App : Application() {
 
