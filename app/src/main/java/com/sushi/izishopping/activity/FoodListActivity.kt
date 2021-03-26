@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sushi.izishopping.App
 import com.sushi.izishopping.adapter.FoodAdapter
 import com.sushi.izishopping.databinding.ActivityFoodListBinding
 import com.sushi.izishopping.model.Food
@@ -27,19 +28,33 @@ class FoodListActivity : AppCompatActivity() {
         binding = ActivityFoodListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        model.getInfos().observe(this, Observer {updateUi(it!!)})
+        binding.floatingActionButton.setOnClickListener { view ->
+            Log.i(TAG, "onClick scannerButton: TEST")
+            val scannerIntent = Intent(this, ScannerActivity::class.java)
+            startActivity(scannerIntent)
+        }
+
+        model.foodDao = App.database.foodDao()
+        model.getInfos().observe(this, Observer {
+            state -> updateUi(state)
+        })
 
         adapter = FoodAdapter(listOf())
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        model.getFoodList()
+        model.getFoodList(null)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        model.getFoodList(null)
     }
 
     private fun updateUi(state: FoodListViewModelState) {
         when(state) {
-            is FoodListViewModelState.Loading -> TODO()
-            is FoodListViewModelState.Empty -> TODO()
+//            is FoodListViewModelState.Loading -> TODO()
+//            is FoodListViewModelState.Empty -> TODO()
             is FoodListViewModelState.Success -> {
                 adapter.updateDataSet(state.foodList.toMutableList())
                 Log.i(TAG, "updateUi: $foodList")
