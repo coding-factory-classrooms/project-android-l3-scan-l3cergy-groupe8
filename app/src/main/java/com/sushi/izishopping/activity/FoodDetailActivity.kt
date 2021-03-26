@@ -1,10 +1,12 @@
 package com.sushi.izishopping.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.sushi.izishopping.databinding.ActivityFoodListBinding
+import com.sushi.izishopping.databinding.ActivityFoodDetailBinding
+import com.sushi.izishopping.utils.DownloadImageFromUrl
 import com.sushi.izishopping.viewmodel.FoodDetailViewModel
 import com.sushi.izishopping.viewmodel.FoodDetailViewModelState
 

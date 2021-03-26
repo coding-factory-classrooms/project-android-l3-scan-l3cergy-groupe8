@@ -44,8 +44,8 @@ class FoodListActivity : AppCompatActivity() {
                 adapter.updateDataSet(state.foodList.toMutableList())
                 Log.i(TAG, "updateUi: $foodList")
             }
-            is FoodListViewModelState.Failure -> TODO()
-            else -> TODO()
+            is FoodListViewModelState.Failure ->
+                Log.i(TAG, "updateUi: ${state.errorMessage}")
         }
     }
 }
