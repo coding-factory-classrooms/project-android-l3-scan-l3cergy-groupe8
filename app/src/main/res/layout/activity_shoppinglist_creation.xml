@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/shoppinglistCreationLabelTextView"
         app:layout_constraintStart_toStartOf="@+id/shoppinglistCreationLabelTextView"
-        app:layout_constraintTop_toBottomOf="@+id/shoppinglistCreationLabelTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/shoppinglistCreationLabelTextView"
+        tools:text="Name" />
 
     <Button
         android:id="@+id/createShoppinglistButton"

@@ -31,7 +31,7 @@ class ScannerViewModel() : ViewModel() {
         val food : Food = foodApiCall(barcode)
         if(food != null) {
             verifyData()
-            var entity : FoodEntity = foodDao.getFoodByBarcode("dlkqzjqlkjdqlkdjq")
+            var entity : FoodEntity = foodDao.getFoodByBarcode(barcode)
             if(entity == null) {
                 foodDao.addFood(food.toFoodEntity())
             } else {
