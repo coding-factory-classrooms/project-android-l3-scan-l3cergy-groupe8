@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.sushi.izishopping.databinding.ActivityFoodDetailBinding
+import com.sushi.izishopping.utils.DownloadImageFromUrl
 import com.sushi.izishopping.viewmodel.FoodDetailViewModel
 import com.sushi.izishopping.viewmodel.FoodDetailViewModelState
 
@@ -21,27 +22,22 @@ class FoodDetailActivity : AppCompatActivity() {
         binding = ActivityFoodDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val barcode : String = intent.getStringExtra("barcode")
-        Log.i(TAG, "onCreate: barcode -> $barcode")
-        binding.detailTitletextView.text = barcode
+        model.getInfos().observe(this, Observer { updateUi(it!!) })
 
-        model.getInfos().observe(this, Observer { state ->
-            updateUi(state)
-        })
-
-        model.getFoodDetail()
+        model.getFoodDetail(intent.getParcelableExtra("food"))
     }
 
     private fun updateUi(state: FoodDetailViewModelState?) {
         when(state) {
-//            is FoodDetailViewModelState.Loading -> TODO()
-            is FoodDetailViewModelState.Empty -> TODO()
+            is FoodDetailViewModelState.Loading ->
+                Log.i(TAG, "updateUi: ")
             is FoodDetailViewModelState.Success -> {
-                // display detail of the product chosen
-
+                binding.detailTitletextView.text = state.foodItem.name
+                DownloadImageFromUrl(binding.foodDetailImageView).execute(state.foodItem.imgLink)
+                binding.scanDetailTextView.text = state.foodItem.dateScan
             }
-            is FoodDetailViewModelState.Failure -> TODO()
-//            else -> TODO()
+            is FoodDetailViewModelState.Failure ->
+                Log.e(TAG, "updateUi: ${state.errorMessage}")
         }
     }
 }

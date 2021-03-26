@@ -7,9 +7,9 @@ import com.sushi.izishopping.model.Food
 import com.sushi.izishopping.utils.database.dao.FoodDao
 
 private val fakeData : List<Food> = listOf(
-    Food("3329770063297", "YOP Parfum Vanille", "","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e"),
-    Food("3329770063280", "YOP Parfum Framboise", "","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e"),
-    Food("3023470001015", "Galettes St. Michel", "","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e"),
+    Food("3329770063297", "YOP Parfum Vanille", "24/03/2021","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e"),
+    Food("3329770063280", "YOP Parfum Framboise", "25/03/2021","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e"),
+    Food("3023470001015", "Galettes St. Michel", "26/03/2021","https://static.openfoodfacts.org/images/products/332/977/006/3297/front_fr.48.400.jpg","e"),
 )
 
 sealed class FoodListViewModelState(
