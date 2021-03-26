@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import com.google.zxing.integration.android.IntentIntegrator
 import com.sushi.izishopping.App
 import com.sushi.izishopping.databinding.ActivityScannerBinding
-import com.sushi.izishopping.scanner.ScannerViewModel
+import com.sushi.izishopping.viewmodel.ScannerViewModel
 
 private const val TAG = "ScannerActivity"
 
