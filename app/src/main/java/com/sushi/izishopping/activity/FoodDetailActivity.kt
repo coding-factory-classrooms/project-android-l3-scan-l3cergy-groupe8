@@ -5,8 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.sushi.izishopping.databinding.ActivityFoodListBinding
-import com.sushi.izishopping.fooddetail.FoodDetailViewModel
-import com.sushi.izishopping.fooddetail.FoodDetailViewModelState
+import com.sushi.izishopping.viewmodel.FoodDetailViewModel
+import com.sushi.izishopping.viewmodel.FoodDetailViewModelState
 
 
 private const val TAG = "FoodDetailActivity"
