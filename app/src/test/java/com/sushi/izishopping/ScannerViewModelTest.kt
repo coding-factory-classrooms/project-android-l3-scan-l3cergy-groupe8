@@ -2,9 +2,7 @@ package com.sushi.izishopping
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
 import com.sushi.izishopping.model.Food
-import com.sushi.izishopping.utils.api.foodApiCall
 import com.sushi.izishopping.utils.database.dao.FoodDao
 import com.sushi.izishopping.viewmodel.ScannerViewModel
 import com.sushi.izishopping.viewmodel.ScannerViewModelState
@@ -45,6 +43,6 @@ class ScannerViewModelTest {
             "",
             "")
 
-        whenever(foodApiCall(testFood.barcode)).thenReturn(testFood)
+//        whenever(foodApiCall(testFood.barcode)).thenReturn(testFood)
     }
 }

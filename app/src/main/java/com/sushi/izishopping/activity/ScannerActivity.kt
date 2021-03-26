@@ -10,7 +10,8 @@ import androidx.lifecycle.Observer
 import com.google.zxing.integration.android.IntentIntegrator
 import com.sushi.izishopping.App
 import com.sushi.izishopping.databinding.ActivityScannerBinding
-import com.sushi.izishopping.utils.api.foodApiCall
+import com.sushi.izishopping.utils.api.CustomApi
+import com.sushi.izishopping.utils.api.CustomApiClass
 import com.sushi.izishopping.viewmodel.ScannerViewModel
 import com.sushi.izishopping.viewmodel.ScannerViewModelState
 
@@ -23,12 +24,15 @@ class ScannerActivity : AppCompatActivity() {
     private val model : ScannerViewModel by viewModels()
     private lateinit var binding : ActivityScannerBinding
 
+    private val api : CustomApi = CustomApiClass()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         model.foodDao = App.database.foodDao()
+        model.api = CustomApiClass()
 
         model.getInfos().observe(this, Observer { state -> updateUi(state) })
 
@@ -48,7 +52,7 @@ class ScannerActivity : AppCompatActivity() {
         when(state) {
             is ScannerViewModelState.Success -> {
                 val intent = Intent(this, FoodDetailActivity::class.java)
-                intent.putExtra("food", foodApiCall(state.barcode) )
+                intent.putExtra("food", api.foodApiCall(state.barcode) )
                 startActivity(intent)
                 finish()
             }

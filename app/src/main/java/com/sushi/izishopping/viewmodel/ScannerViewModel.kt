@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sushi.izishopping.model.Food
-import com.sushi.izishopping.utils.api.foodApiCall
+import com.sushi.izishopping.utils.api.CustomApi
 import com.sushi.izishopping.utils.database.dao.FoodDao
 import com.sushi.izishopping.utils.database.entity.FoodEntity
 import java.text.SimpleDateFormat
@@ -23,12 +23,13 @@ sealed class ScannerViewModelState(
 class ScannerViewModel() : ViewModel() {
 
     lateinit var foodDao: FoodDao
+    lateinit var api : CustomApi
 
     private val state = MutableLiveData<ScannerViewModelState>()
     fun getInfos() : LiveData<ScannerViewModelState> = state
 
     fun findFoodInfos(barcode: String) {
-        val food : Food = foodApiCall(barcode)
+        val food : Food = api.foodApiCall(barcode)
         if(food != null) {
             verifyData()
             var entity : FoodEntity = foodDao.getFoodByBarcode(barcode)

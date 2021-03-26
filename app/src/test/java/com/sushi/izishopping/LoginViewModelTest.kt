@@ -15,6 +15,25 @@ class LoginViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Test
+    fun `valid credentials yields state Success`() {
+
+        // on instancie le model
+        val model = LoginViewModel()
+        // on instancie l'observer qui va regarder tout ce qui se passe au niveau du livedata
+        val observer = model.getState().testObserver()
+
+        // on declenche notre action
+        model.login("izi", "shoppin")
+
+        Assert.assertEquals(
+            listOf(
+                LoginViewModelState.Success
+            ),
+            observer.observedValues
+        )
+    }
+
+    @Test
     fun `invalid credentials yields state Failure`() {
 
         // on instancie le model
@@ -28,25 +47,6 @@ class LoginViewModelTest {
         Assert.assertEquals(
             listOf(
                 LoginViewModelState.Failure("Invalid Credentials")
-            ),
-            observer.observedValues
-        )
-    }
-
-    @Test
-    fun `valid credentials yields state Success`() {
-
-        // on instancie le model
-        val model = LoginViewModel()
-        // on instancie l'observer qui va regarder tout ce qui se passe au niveau du livedata
-        val observer = model.getState().testObserver()
-
-        // on declenche notre action
-        model.login("kotlin", "rocks")
-
-        Assert.assertEquals(
-            listOf(
-                LoginViewModelState.Success
             ),
             observer.observedValues
         )
