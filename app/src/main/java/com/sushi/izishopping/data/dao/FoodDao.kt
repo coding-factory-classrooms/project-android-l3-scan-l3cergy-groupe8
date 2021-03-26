@@ -1,18 +1,15 @@
 package com.sushi.izishopping.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.sushi.izishopping.data.entity.Food
+import com.sushi.izishopping.data.entity.FoodEntity
 
 @Dao
 interface FoodDao {
+    @Query("SELECT * FROM food ORDER BY foodId ASC")
+    fun readAllData(): List<FoodEntity>
 
-    @Query("SELECT * FROM Food ORDER BY id ASC")
-    fun readAllData(): LiveData<List<Food>>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addFood(food: Food)
+    @Insert
+    fun addFood(food: FoodEntity)
 }

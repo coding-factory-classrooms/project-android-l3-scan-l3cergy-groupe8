@@ -23,12 +23,13 @@ private const val TAG = "ApiRequests"
 interface FoodApiCall {
     @GET("v0/product/{barcode}.json")
     fun foodInformation(@Path("barcode") barcode: String): Call<FoodInfo>
-
-
 }
 
 //Permet de créer un appel à l'API graâce à Retrofit via l'interface FoodApiCall
-fun foodApiCall(barcode : String){
+fun foodApiCall(barcode : String): Food {
+
+    var newFood : Food = Food("", "defaultName", "", "", "")
+
     val logging = HttpLoggingInterceptor()
     logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
     val client = OkHttpClient.Builder()
@@ -56,7 +57,7 @@ fun foodApiCall(barcode : String){
         override fun onResponse(call: Call<FoodInfo>, foodInfo: Response<FoodInfo>) {
             Log.i(TAG, "onResponse: response = ${foodInfo.body()}")
             // On attribue les données récupérés à un Food
-            val newFood = Food(
+            newFood = Food(
                 foodInfo.body()!!.code,
                 foodInfo.body()!!.product.product_name,
                 LocalDateTime.now().toString(),
@@ -68,8 +69,10 @@ fun foodApiCall(barcode : String){
 
         override fun onFailure(call: Call<FoodInfo>, t: Throwable) {
             Log.i(TAG, "onFailure: P'tite erreur")
+            newFood = Food("", "MANGES TES MANGEMORTS", "", "", "")
             t.printStackTrace()
         }
 
     })
+    return newFood
 }
