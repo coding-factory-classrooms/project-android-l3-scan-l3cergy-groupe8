@@ -9,12 +9,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.zxing.integration.android.IntentIntegrator
+import com.sushi.izishopping.App
 import com.sushi.izishopping.databinding.ActivityScannerBinding
 
 private const val TAG = "ScannerActivity"
 
 class ScannerActivity : AppCompatActivity() {
-    private var debugMode : Boolean = true
+    private var debugMode : Boolean = false
     private val defaultBarcode : String = "3329770063297"
 
     private val model : ScannerViewModel by viewModels()
@@ -24,6 +25,8 @@ class ScannerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        model.foodDao = App.database.foodDao()
 
         model.getInfos().observe(this, Observer { Log.i(TAG, "onCreate: ") })
 
